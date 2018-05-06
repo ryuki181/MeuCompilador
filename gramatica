@@ -1,0 +1,91 @@
+<programa>			-> 	algoritmo "<nomeAlgoritmo>" <lstDeclaracoes> inicio <bloco> fimalgoritmo
+
+<nomeAlgoritmo>		-> [A-Za-z]+([A-Za-z0-9])*
+
+
+<lstDeclaracoes>	-> 	<declaracao><lstDeclaracoes>
+					|	<comentario><lstDeclaracoes>
+					|  	ε
+					
+<comentario>		-> //[A-Za-z0-9]*
+					
+<declaracao>		-> 	<lstIds> : <tipo>
+
+<lstIds>			-> 	<id>,<lstIds>
+					|  	<id>
+					
+<tipo>				-> 	inteiro
+					|	logico
+					
+<id>				-> 	[A-Za-z]+([A-Za-z0-9])*
+
+<bloco>				-> 	<atribuicao><bloco>
+					|	<selecao><bloco>
+					|	<repeticao><bloco>
+					|	<entrada><bloco>
+					|	<saida><bloco>
+					|	<comentario><bloco>
+					|  	ε
+
+<atribuicao>		->	<id> <- <expressao>;
+					|	<id> <- <id>;	
+					|	<id> <-	<inteiro>;
+					|	<id> <- <logico>;
+
+<inteiro>			->	[0-9]+
+
+<logico>			->	VERDADEIRO
+					|	FALSO
+					
+<expressao>			-> 	<expressaoNumerica>
+					|	<expressaoLogica>
+
+<expressaoNumerica>	-> 	<id><operadorNumerico><id>
+					|	(<expressaoNumerica>)<operadorNumerico>(<expressaoNumerica>)
+					|	(<expressaoNumerica>)
+					|	<id>
+
+<expressaoLogica>	-> 	<id><operadorLogico><id>
+					|	(<expressaoLogica>)<operadorLogico>(<expressaoLogica>)
+					|	(<expressaoLogica>)
+					|	<id>
+
+<operadorNumerico>	-> 	+
+					|	-
+					|	*
+					|	\
+					|	>
+					|	>=
+					|	<
+					|	<=
+					|	=
+					|	<>
+					|	mod
+					|	exp
+					
+<operadorLogico>	-> 	e
+					|	ou
+
+<selecao>			->	se <expressaoLogica> entao <bloco> <senao> fimse
+
+<senao>				->	senao <bloco>
+					|  	ε
+					
+<repeticao>			-> 	<enquanto>
+					|	<para>
+				
+<enquanto>			->	enquanto <expressaoLogica> faca <bloco> fimenquanto
+
+<para>				-> 	para <id> de <inteiro> ate <inteiro> <passo> faca <bloco> fimpara
+
+<passo>				-> 	passo <inteiro>
+					|  	ε
+					
+<entrada>			-> leia(<lstIds>);
+
+<saida>				-> escreva(<lstExpressoes>);
+
+<lstExpressoes>		-> 	<expressaoNumerica>,<lstExpressoes>	
+					|	<expressaoLogica>,<lstExpressoes>
+					|	<expressaoNumerica>
+					|	<expressaoLogica>
