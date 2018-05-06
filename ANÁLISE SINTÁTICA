@@ -1,7 +1,9 @@
 G = (N, T, P, S), aonde:
 
-N = {S, A, B, C, D, E, F, G', H, I, J, K, L, M, N', O, P, Q, R, T'},
-T = {algortimo, ", inicio, fimalgoritmo, id, vazio, /, inteiro, logico, :, atribuicao, ,, arit-op, string, parent-abre, parent-fecha, comparador, logic-op, se, entao, senao, fimse, num, verdadeiro, falso, enquanto, faca, fimenquanto, escreva},
+N = {S, A, B, C, D, E, F, G', H, I, J, K, L, M, N', O, P, Q, R, T', U, V, W},
+T = {algortimo, ", inicio, fimalgoritmo, id, vazio, /, inteiro, logico, :, atribuicao, ,, arit-op, string, parent-abre,
+	parent-fecha, comparador, logic-op, se, entao, senao, fimse, num, verdadeiro, falso, enquanto, faca, fimenquanto, escreva,
+	para, de, ate, faca, fimpara, passo, leia},
 P = {
 	S -> algoritmo " A " B inicio G' fimalgoritmo
 	A -> id
@@ -10,7 +12,7 @@ P = {
 	D -> id | id , D
 	E -> inteiro | logico
 	F -> // string
-	G' -> H G' | N G' | Q G' | R G' | F G' | vazio
+	G' -> H G' | N G' | Q G' | R G' | F G' | U G' | W G' | vazio
 	H -> id atribuicao I | id atribuicao id | id atribuicao num | id atribuicao P
 	I -> J | L
 	J -> K arit-op K
@@ -23,6 +25,9 @@ P = {
 	Q -> enquanto L faca G' fimenquanto
 	R -> escreva parent-abre T' parent-fecha
 	T' -> J T' | L T' | J | L
+	U -> para id de num ate num V faca G' fimpara
+	V -> passo num | vazio
+	W -> leia parent-abre D parent-fecha
 },
 S = S
 
