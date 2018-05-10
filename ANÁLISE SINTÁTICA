@@ -16,23 +16,21 @@ Producoes = {
 	F -> / / string
 	G -> H G | N G | Q G | R G | F G | U G | W G | vazio
 	H -> id atribuicao Y
-	I -> J | L
-	J -> K arit-op K
-	K -> id Z | parent-abre J parent-fecha Z
-	L -> id comparador M AA | parent-abre L parent-fecha comparador M AA
-	M -> id | parent-abre L parent-fecha | L
+	I -> id J K | parent-abre I parent-fecha J K
+	J -> comparador | logic-op | arit-op
+	K -> id L | parent-abre I parent-fecha L
+	L -> J I | vazio
+	M -> T | vazio
 	N -> se L entao G O fimse
 	O -> senao G | vazio
 	P -> verdadeiro | falso
 	Q -> enquanto L faca G fimenquanto
 	R -> escreva parent-abre T parent-fecha
-	T -> J T | L T | J | L
+	T -> I M
 	U -> para id de num ate num V faca G fimpara
 	V -> passo num | vazio
 	W -> leia parent-abre D parent-fecha
 	X -> , D | vazio
-	Y -> id | num | I | P
-	Z -> arit-op K Z | vazio
-	AA -> comparador M AA | logic-op L AA | vazio
+	Y -> num | K | P
 },
 Inicial = S
