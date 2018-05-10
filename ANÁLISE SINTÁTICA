@@ -2,7 +2,7 @@
 
 Gramatica = (NaoTerminais, Terminais, Producoes, Inicial), aonde:
 
-NaoTerminais = {S, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, T, U, V, W, X, Y},
+NaoTerminais = {S, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, T, U, V, W, X, Y, Z, AA},
 Terminais = {algortimo, ", inicio, fimalgoritmo, id, vazio, /, inteiro, logico, :, atribuicao, ,, arit-op, string, parent-abre,
 	parent-fecha, comparador, logic-op, se, entao, senao, fimse, num, verdadeiro, falso, enquanto, faca, fimenquanto, escreva,
 	para, de, ate, fimpara, passo, leia, fim},
@@ -13,13 +13,13 @@ Producoes = {
 	C -> D : E
 	D -> id X
 	E -> inteiro | logico
-	F -> // string
+	F -> / / string
 	G -> H G | N G | Q G | R G | F G | U G | W G | vazio
 	H -> id atribuicao Y
 	I -> J | L
 	J -> K arit-op K
-	K -> id | parent-abre J parent-fecha | J
-	L -> M comparador M | L logic-op L
+	K -> id Z | parent-abre J parent-fecha Z
+	L -> id comparador M AA | parent-abre L parent-fecha comparador M AA
 	M -> id | parent-abre L parent-fecha | L
 	N -> se L entao G O fimse
 	O -> senao G | vazio
@@ -32,5 +32,7 @@ Producoes = {
 	W -> leia parent-abre D parent-fecha
 	X -> , D | vazio
 	Y -> id | num | I | P
+	Z -> arit-op K Z | vazio
+	AA -> comparador M AA | logic-op L AA | vazio
 },
 Inicial = S
