@@ -1,39 +1,34 @@
-G = (N, T, P, S), aonde:
+// Lembrar de trocar os tokens dos símbolos " / : ,
 
-N = {S, A, B, C, D, E, F, G', H, I, J, K, L, M, N', O, P, Q, R, T', U, V, W},
-T = {algortimo, ", inicio, fimalgoritmo, id, vazio, /, inteiro, logico, :, atribuicao, ,, arit-op, string, parent-abre,
+Gramatica = (NaoTerminais, Terminais, Producoes, Inicial), aonde:
+
+NaoTerminais = {S, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, T, U, V, W},
+Terminais = {algortimo, ", inicio, fimalgoritmo, id, vazio, /, inteiro, logico, :, atribuicao, ,, arit-op, string, parent-abre,
 	parent-fecha, comparador, logic-op, se, entao, senao, fimse, num, verdadeiro, falso, enquanto, faca, fimenquanto, escreva,
 	para, de, ate, faca, fimpara, passo, leia},
-P = {
-	S -> algoritmo " A " B inicio G' fimalgoritmo
+Producoes = {
+	S -> algoritmo " A " B inicio G fimalgoritmo
 	A -> id
 	B -> C B | F B | vazio
 	C -> D : E
 	D -> id | id , D
 	E -> inteiro | logico
 	F -> // string
-	G' -> H G' | N G' | Q G' | R G' | F G' | U G' | W G' | vazio
+	G -> H G | N G | Q G | R G | F G | U G | W G | vazio
 	H -> id atribuicao I | id atribuicao id | id atribuicao num | id atribuicao P
 	I -> J | L
 	J -> K arit-op K
 	K -> id | parent-abre J parent-fecha | J
 	L -> M comparador M | L logic-op L
 	M -> id | parent-abre L parent-fecha | L
-	N' -> se L entao G' O fimse
-	O -> senao G' | vazio
+	N -> se L entao G O fimse
+	O -> senao G | vazio
 	P -> verdadeiro | falso
-	Q -> enquanto L faca G' fimenquanto
-	R -> escreva parent-abre T' parent-fecha
-	T' -> J T' | L T' | J | L
-	U -> para id de num ate num V faca G' fimpara
+	Q -> enquanto L faca G fimenquanto
+	R -> escreva parent-abre T parent-fecha
+	T -> J T | L T | J | L
+	U -> para id de num ate num V faca G fimpara
 	V -> passo num | vazio
 	W -> leia parent-abre D parent-fecha
 },
-S = S
-
-legenda:
-G = Gramática
-N = Não terminais
-T = Terminais
-P = Produções
-S = Símbolo inicial
+Inicial = S
