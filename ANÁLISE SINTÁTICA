@@ -2,7 +2,7 @@
 
 Gramatica = (NaoTerminais, Terminais, Producoes, Inicial), aonde:
 
-NaoTerminais = {S, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, T, U, V, W},
+NaoTerminais = {S, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, T, U, V, W, X},
 Terminais = {algortimo, ", inicio, fimalgoritmo, id, vazio, /, inteiro, logico, :, atribuicao, ,, arit-op, string, parent-abre,
 	parent-fecha, comparador, logic-op, se, entao, senao, fimse, num, verdadeiro, falso, enquanto, faca, fimenquanto, escreva,
 	para, de, ate, fimpara, passo, leia, fim},
@@ -11,7 +11,7 @@ Producoes = {
 	A -> id
 	B -> C B | F B | vazio
 	C -> D : E
-	D -> id | id , D
+	D -> id X
 	E -> inteiro | logico
 	F -> // string
 	G -> H G | N G | Q G | R G | F G | U G | W G | vazio
@@ -30,5 +30,6 @@ Producoes = {
 	U -> para id de num ate num V faca G fimpara
 	V -> passo num | vazio
 	W -> leia parent-abre D parent-fecha
+	X -> , D | vazio
 },
 Inicial = S
